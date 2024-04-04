@@ -1,0 +1,23 @@
+import capos.*
+import castilloDePiedra.*
+import artefactos.*
+
+test "agarrar artefacos"{
+	rolando.agarrar(espadaDelDestino)
+	rolando.agarrar(libroDeHechizos)
+	assert.equals(2,rolando.artefactos().size())
+	rolando.agarrar(collarDivino)
+	assert.equals(2,rolando.artefactos().size())
+}
+test "agarrar artefacos y ir al castillo"{
+	rolando.agarrar(espadaDelDestino)
+	rolando.agarrar(libroDeHechizos)
+	rolando.irAlHogar()
+	assert.equals(0,rolando.artefactos().size())
+	assert.equals(2,castilloDePiedra.baul().size())
+	rolando.agarrar(collarDivino)
+	assert.equals(1,rolando.artefactos().size())
+	rolando.irAlHogar()
+	assert.equals(0,rolando.artefactos().size())
+	assert.equals(3,castilloDePiedra.baul().size())
+}
